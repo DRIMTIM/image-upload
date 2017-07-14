@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title><ion-icon item-start name="md-contact"></ion-icon> Ingresar</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+
+        <ion-item>
+            <ion-label stacked>Correo</ion-label>
+            <ion-input formControlName="email" type="email" placeholder="Ingrese su correo"
+                       [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message"
+                  *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
+            <p>Por favor ingrese un correo válido.</p>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Contraseña</ion-label>
+            <ion-input formControlName="password" type="password" placeholder="Su contraseña"
+                       [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message"
+                  *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
+            <p>La contraseña requiere más de 6 caracteres.</p>
+        </ion-item>
+        <br/>
+        <button ion-button block type="submit" [disabled]="!loginForm.valid">
+            Ingresar
+        </button>
+
+<!--        <button ion-button block color="danger" (click)="googleLogin()">
+            <ion-icon name="logo-googleplus"></ion-icon>&nbsp;
+            Cuenta de Google
+        </button>-->
+
+    </form>
+
+    <button ion-button block clear (click)="goToSignup()">Crear Cuenta</button>
+
+<!--    <button ion-button block clear (click)="goToResetPassword()">Olvidaste tu contraseña?</button>-->
+
+</ion-content>
