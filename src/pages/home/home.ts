@@ -91,7 +91,7 @@ export class HomePage {
     }
 
     picturesList() {
-        this.navCtrl.setRoot(PictureListPage);
+        this.navCtrl.push(PictureListPage);
     }
 
 }
